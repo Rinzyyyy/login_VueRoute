@@ -77,24 +77,22 @@ watch(
 </script>
 
 <template>
-  <div class="back">
-    <main>
-      <section>
-        <input v-model="account" type="text" :placeholder="enter" />
-        <input v-model="password" type="text" :placeholder="pass_word" />
-        <p :class="wrongHint">{{ err }}</p>
-        <RouterLink to="/forgot" :class="a">{{ forget }}</RouterLink>
-      </section>
-      <button @click="accese" :class="button">{{ log_in }}</button>
-      <div class="or">
-        <hr />
-        <p :class="p">{{ or }}</p>
-        <hr />
-      </div>
-      <div class="singnUp">
-        <p :class="p">{{ signupP }}</p>
-        <RouterLink to="/signUp" :class="a">{{ signupA }}</RouterLink>
-      </div>
-    </main>
-  </div>
+  <main>
+    <section>
+      <input v-model="account" type="text" :placeholder="enter" />
+      <input v-model="password" type="text" :placeholder="pass_word" />
+      <p :class="wrongHint">{{ err }}</p>
+      <RouterLink to="/forgot" :class="a">{{ forget }}</RouterLink>
+    </section>
+    <button @click="accese" :class="button">{{ log_in }}</button>
+    <div class="or">
+      <hr />
+      <p :class="p">{{ or }}</p>
+      <hr />
+    </div>
+    <div class="singnUp">
+      <p :class="p">{{ signupP }}</p>
+      <RouterLink to="/signUp" :class="a">{{ signupA }}</RouterLink>
+    </div>
+  </main>
 </template>

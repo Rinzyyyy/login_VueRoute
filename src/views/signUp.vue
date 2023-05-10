@@ -79,24 +79,22 @@ function SignUpAlertContent() {
 </script>
 
 <template>
-  <div class="back">
-    <main>
-      <section class="signUp">
-        <input v-model="newAccount" type="text" :placeholder="enter" />
-        <input v-model="newPassword" type="text" :placeholder="pass_word" />
-      </section>
-      <button @click="SignUpAlertContent" :class="button">{{ SignUp }}</button>
-      <div class="or">
-        <hr />
-        <p :class="p">{{ or }}</p>
-        <hr />
-      </div>
-      <div class="singnUp">
-        <p :class="p">{{ logInP }}</p>
-        <RouterLink to="/" :class="a">{{ logInLink }}</RouterLink>
-      </div>
-    </main>
-  </div>
+  <main>
+    <section class="signUp">
+      <input v-model="newAccount" type="text" :placeholder="enter" />
+      <input v-model="newPassword" type="text" :placeholder="pass_word" />
+    </section>
+    <button @click="SignUpAlertContent" :class="button">{{ SignUp }}</button>
+    <div class="or">
+      <hr />
+      <p :class="p">{{ or }}</p>
+      <hr />
+    </div>
+    <div class="singnUp">
+      <p :class="p">{{ logInP }}</p>
+      <RouterLink to="/" :class="a">{{ logInLink }}</RouterLink>
+    </div>
+  </main>
 </template>
 
 <style>
