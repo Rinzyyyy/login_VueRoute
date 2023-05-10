@@ -1,0 +1,42 @@
+{
+  "en": {
+    "account": "phone numer or e-mail address",
+    "password": "password",
+    "forgot": "Forgot password?",
+    "login": "log in",
+    "or": "or",
+    "have": "Don't have an account?",
+    "signUp": "Sign up",
+    "alert": "Sign in sucessfully!",
+    "error": "Wrong email or password!",
+    "logInP": "Already have an account?",
+    "SignUpAlert": "Sing up sucessfuly",
+    "SignFale": "Please set both account and password",
+    "reset": "Reset",
+    "resetPassword": "New password",
+    "resetSucessAlert": "Reset sucessfully",
+    "resetFalse": "Please set new password",
+    "resetFalse2": "This account has not been registered yet.",
+    "hasbeenSignUp": "This account has been registered!"
+  },
+  "cn": {
+    "account": "手機號碼或電子郵件地址",
+    "password": "密碼",
+    "forgot": "忘記密碼？",
+    "login": "登入",
+    "or": "或",
+    "have": "還沒有註冊嗎？",
+    "signUp": "註冊",
+    "alert": "登入成功 !",
+    "error": "帳號或密碼輸入錯誤 ! ",
+    "logInP": "已經註冊過了嗎？",
+    "SignUpAlert": "註冊成功",
+    "SignFale": "請設定帳號及密碼",
+    "reset": "更新",
+    "resetPassword": "新密碼",
+    "resetSucessAlert": "更新成功",
+    "resetFalse": "請設定新密碼",
+    "resetFalse2": "此帳號尚未註冊",
+    "hasbeenSignUp": "此帳號已被註冊！"
+  }
+}

@@ -1,0 +1,191 @@
+div,
+section,
+head,
+main,
+select,
+button {
+  -appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  transition: all 0.5s ease-in-out;
+}
+.time {
+  transition: none;
+}
+.back {
+  display: block;
+  height: 100vh;
+}
+
+label {
+  padding-left: 1rem;
+}
+header,
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+img {
+  padding-bottom: 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(224, 222, 219, 0.3);
+  width: 20rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.logo {
+  height: 9vh;
+}
+input,
+button {
+  margin: 0.3rem;
+  width: 20rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: 0.05rem solid rgb(158, 157, 157);
+  background-color: rgba(235, 240, 243, 0.8);
+}
+button {
+  margin: 0.6rem;
+  width: 5rem;
+  background-color: rgb(241, 237, 237);
+  color: rgb(113, 115, 116);
+}
+a {
+  text-decoration: none;
+  margin: 0.3rem;
+  color: rgb(92, 162, 174);
+  align-self: flex-start;
+}
+hr {
+  width: 10rem;
+  height: 0rem;
+  border: 0.05rem solid rgb(217, 224, 228);
+  margin: 0.5rem;
+}
+.or,
+.singnUp {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  color: rgb(113, 115, 116);
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+  color: rgb(253, 60, 60);
+  align-self: flex-start;
+  margin: 0 0 1rem 0;
+}
+
+nav {
+  display: flex;
+  padding: 0.9rem 1rem 0 1rem;
+  justify-content: end;
+  align-items: center;
+}
+.switch {
+  margin: 0 1rem 0 0;
+  width: 2.8rem;
+  height: 1.3rem;
+  padding: 0.01rem;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.right {
+  padding-right: 0.4rem;
+  font-size: 1.1rem;
+}
+.left {
+  padding-left: 0.2rem;
+  font-size: 1.1rem;
+}
+.showSun {
+  display: block;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+.showMoon {
+  display: block;
+  margin-right: 0.5rem;
+}
+select {
+  margin-left: 0.5rem;
+  width: 3.3rem;
+  height: 1.2rem;
+  padding: 0rem 0.5rem;
+  font-size: 0.8rem;
+  background-color: rgb(241, 237, 237);
+  border: none;
+  border-radius: 0.5rem;
+}
+.arrow {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.2rem;
+  color: rgb(168, 167, 165);
+  pointer-events: none;
+}
+.blackmode_back {
+  background-color: rgb(36, 35, 35);
+  color: aliceblue;
+}
+.blackmode_p {
+  color: aliceblue;
+}
+.blackmode_a {
+  color: rgb(82, 232, 182);
+}
+.blackmode_button {
+  background-color: rgb(62, 62, 62);
+  color: aliceblue;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(161, 158, 158);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(161, 158, 158);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(161, 158, 158);
+}
+#app {
+  height: 100vh;
+}
+
+@media (max-width: 330px) {
+  section {
+    width: 16rem;
+  }
+  input {
+    width: 15rem;
+  }
+  .time {
+    text-align: center;
+  }
+  hr {
+    width: 7.5rem;
+  }
+  div {
+    overflow: hidden;
+  }
+}
