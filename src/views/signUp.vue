@@ -22,6 +22,8 @@ watch(
     SignUpsucess = data[lang].SignUpAlert
     SignUpfale = data[lang].SignFale
     hasbeenSignUp = data[lang].hasbeenSignUp
+    SignUpfalelength = data[lang].SignUpfalelength
+    SignUpfaleChar = data[lang].SignUpfaleChar
   }
 )
 
@@ -34,6 +36,8 @@ let logInLink = data[lang.value].login
 let SignUpsucess = data[lang.value].SignUpAlert
 let SignUpfale = data[lang.value].SignFale
 let hasbeenSignUp = data[lang.value].hasbeenSignUp
+let SignUpfalelength = data[lang.value].SignUpfalelength
+let SignUpfaleChar = data[lang.value].SignUpfaleChar
 
 //切換深淺顏色模式
 let modeChecked = ref(false)
@@ -62,43 +66,67 @@ watch(
 //註冊設定
 const newAccount = ref(null)
 const newPassword = ref(null)
+const reg = new RegExp('^[A-Za-z0-9]+$')
+const wrongHintlength = ref('hide')
+const wrongHintchar = ref('hide')
 
 function SignUpAlertContent() {
   let getAccount = localStorage.getItem(`account_${newAccount.value}`)
-  if (newAccount.value !== null && newPassword.value !== null && newAccount.value !== getAccount) {
+  if (
+    newAccount.value !== null &&
+    newPassword.value !== null &&
+    newAccount.value !== getAccount &&
+    newAccount.value.length >= 5 &&
+    newPassword.value >= 5 &&
+    reg.test(newPassword.value)
+  ) {
     alert(SignUpsucess)
     localStorage.setItem(`account_${newAccount.value}`, newAccount.value)
     localStorage.setItem(`password_${newAccount.value}`, newPassword.value)
     router.push('/')
   } else if (newAccount.value === getAccount && newAccount.value !== null) {
     alert(hasbeenSignUp)
-  } else {
+  } else if (newAccount.value === null || newAccount.value === null) {
     alert(SignUpfale)
+  } else if (!reg.test(newPassword.value)) {
+    wrongHintchar.value = 'show'
+  } else if (
+    (newAccount.value.length < 5 && newAccount.value !== null) ||
+    (newPassword.value.length < 5 && newPassword.value !== null)
+  ) {
+    wrongHintlength.value = 'show'
   }
 }
 </script>
 
 <template>
-  <main>
-    <section class="signUp">
-      <input v-model="newAccount" type="text" :placeholder="enter" />
-      <input v-model="newPassword" type="text" :placeholder="pass_word" />
-    </section>
-    <button @click="SignUpAlertContent" :class="button">{{ SignUp }}</button>
-    <div class="or">
-      <hr />
-      <p :class="p">{{ or }}</p>
-      <hr />
-    </div>
-    <div class="singnUp">
-      <p :class="p">{{ logInP }}</p>
-      <RouterLink to="/" :class="a">{{ logInLink }}</RouterLink>
-    </div>
-  </main>
+  <div class="back">
+    <form>
+      <section class="signUp">
+        <input v-model="newAccount" type="text" :placeholder="enter" />
+        <input v-model="newPassword" type="text" :placeholder="pass_word" />
+        <p :class="wrongHintlength">{{ SignUpfalelength }}</p>
+        <p :class="wrongHintchar">{{ SignUpfaleChar }}</p>
+      </section>
+      <button @click="SignUpAlertContent" :class="button">{{ SignUp }}</button>
+      <div class="or">
+        <hr />
+        <p :class="p">{{ or }}</p>
+        <hr />
+      </div>
+      <div class="singnUp">
+        <p :class="p">{{ logInP }}</p>
+        <RouterLink to="/" :class="a">{{ logInLink }}</RouterLink>
+      </div>
+    </form>
+  </div>
 </template>
 
 <style>
 .signUp {
   background-color: rgba(217, 231, 217, 0.4);
+}
+p {
+  font-size: 0.85rem;
 }
 </style>

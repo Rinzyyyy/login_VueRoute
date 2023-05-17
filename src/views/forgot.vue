@@ -22,6 +22,8 @@ watch(
     resetSucess = data[lang].resetSucessAlert
     resetfalse = data[lang].resetFalse
     resetfalse2 = data[lang].resetFalse2
+    SignUpfalelength = data[lang].SignUpfalelength
+    SignUpfaleChar = data[lang].SignUpfaleChar2
   }
 )
 
@@ -34,6 +36,8 @@ let signUpLink = data[lang.value].signUp
 let resetSucess = data[lang.value].resetSucessAlert
 let resetfalse = data[lang.value].resetFalse
 let resetfalse2 = data[lang.value].resetFalse2
+let SignUpfalelength = data[lang.value].SignUpfalelength
+let SignUpfaleChar = data[lang.value].SignUpfaleChar2
 
 //切換深淺顏色模式
 let modeChecked = ref(false)
@@ -62,16 +66,27 @@ watch(
 //重設密碼
 const account = ref(null)
 const newPassword = ref(null)
+const reg = new RegExp('^[A-Za-z0-9]+$')
+const wrongHintlength = ref('hide')
+const wrongHintchar = ref('hide')
 
 function SignUpAlertContent() {
   let getAccount = localStorage.getItem(`account_${account.value}`)
   if (account.value !== null && account.value === getAccount) {
-    if (newPassword.value !== null) {
+    if (
+      newPassword.value !== null &&
+      reg.test(newPassword.value) &&
+      newPassword.value.length >= 5
+    ) {
       alert(resetSucess)
       localStorage.setItem(`password_${account.value}`, newPassword.value)
       router.push('/')
-    } else {
+    } else if (newPassword.value === null) {
       alert(resetfalse)
+    } else if (!reg.test(newPassword.value)) {
+      wrongHintchar.value = 'show'
+    } else if (newPassword.value.length < 5) {
+      wrongHintlength.value = 'show'
     }
   } else {
     alert(resetfalse2)
@@ -80,22 +95,26 @@ function SignUpAlertContent() {
 </script>
 
 <template>
-  <main>
-    <section class="reset">
-      <input v-model="account" type="text" :placeholder="enter" />
-      <input v-model="newPassword" type="text" :placeholder="resetPass_word" />
-    </section>
-    <button @click="SignUpAlertContent" :class="button">{{ reset }}</button>
-    <div class="or">
-      <hr />
-      <p :class="p">{{ or }}</p>
-      <hr />
-    </div>
-    <div class="singnUp">
-      <p :class="p">{{ have }}</p>
-      <RouterLink to="/signUp" :class="a">{{ signUpLink }}</RouterLink>
-    </div>
-  </main>
+  <div class="back">
+    <main>
+      <section class="reset">
+        <input v-model="account" type="text" :placeholder="enter" />
+        <input v-model="newPassword" type="text" :placeholder="resetPass_word" />
+        <p :class="wrongHintlength">{{ SignUpfalelength2 }}</p>
+        <p :class="wrongHintchar">{{ SignUpfaleChar }}</p>
+      </section>
+      <button @click="SignUpAlertContent" :class="button">{{ reset }}</button>
+      <div class="or">
+        <hr />
+        <p :class="p">{{ or }}</p>
+        <hr />
+      </div>
+      <div class="singnUp">
+        <p :class="p">{{ have }}</p>
+        <RouterLink to="/signUp" :class="a">{{ signUpLink }}</RouterLink>
+      </div>
+    </main>
+  </div>
 </template>
 
 <style>

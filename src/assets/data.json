@@ -14,10 +14,13 @@
     "SignFale": "Please set both account and password",
     "reset": "Reset",
     "resetPassword": "New password",
-    "resetSucessAlert": "Reset sucessfully",
-    "resetFalse": "Please set new password",
+    "resetSucessAlert": "Reset sucessfully~",
+    "resetFalse": "Please set new password.",
     "resetFalse2": "This account has not been registered yet.",
-    "hasbeenSignUp": "This account has been registered!"
+    "hasbeenSignUp": "This account has been registered!",
+    "SignUpfalelength": "Password and account need more than 5 words.",
+    "SignUpfaleChar": "Passwords can only contain numbers and English letters.",
+    "SignUpfalelength2": "Password need more than 5 words."
   },
   "cn": {
     "account": "手機號碼或電子郵件地址",
@@ -37,6 +40,9 @@
     "resetSucessAlert": "更新成功",
     "resetFalse": "請設定新密碼",
     "resetFalse2": "此帳號尚未註冊",
-    "hasbeenSignUp": "此帳號已被註冊！"
+    "hasbeenSignUp": "此帳號已被註冊！",
+    "SignUpfalelength": "帳號或密碼需大於五個字符",
+    "SignUpfaleChar": "密碼只能包含數字及英文字母",
+    "SignUpfalelength2": "密碼設定需大於五個字符"
   }
 }

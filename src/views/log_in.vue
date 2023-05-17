@@ -34,9 +34,18 @@ let sucess = data[lang.value].alert
 let err = data[lang.value].error
 
 //登入設定
+const isSafari =
+  navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1
 const account = ref(null)
 const password = ref(null)
 const wrongHint = ref('hide')
+const text = ref('password')
+const eyeOpen = ref('hide')
+const eyeLash = ref('eye')
+let open = false
+if (isSafari) {
+  eyeLash.value = 'eye2'
+}
 
 function accese() {
   let getAccount = localStorage.getItem(`account_${account.value}`)
@@ -47,7 +56,24 @@ function accese() {
   } else {
     wrongHint.value = 'show'
     account.value = ''
-    password.value = ''
+  }
+}
+function passwordEye() {
+  open = !open
+  if (open) {
+    eyeOpen.value = 'eye'
+    eyeLash.value = 'hide'
+    text.value = 'text'
+    if (isSafari) {
+      eyeOpen.value = 'eye2'
+    }
+  } else if (!open) {
+    eyeOpen.value = 'hide'
+    eyeLash.value = 'eye'
+    text.value = 'password'
+    if (isSafari) {
+      eyeLash.value = 'eye2'
+    }
   }
 }
 
@@ -77,22 +103,47 @@ watch(
 </script>
 
 <template>
-  <main>
-    <section>
-      <input v-model="account" type="text" :placeholder="enter" />
-      <input v-model="password" type="text" :placeholder="pass_word" />
-      <p :class="wrongHint">{{ err }}</p>
-      <RouterLink to="/forgot" :class="a">{{ forget }}</RouterLink>
-    </section>
-    <button @click="accese" :class="button">{{ log_in }}</button>
-    <div class="or">
-      <hr />
-      <p :class="p">{{ or }}</p>
-      <hr />
-    </div>
-    <div class="singnUp">
-      <p :class="p">{{ signupP }}</p>
-      <RouterLink to="/signUp" :class="a">{{ signupA }}</RouterLink>
-    </div>
-  </main>
+  <div class="back">
+    <form>
+      <section>
+        <input v-model="account" type="text" :placeholder="enter" />
+        <input v-model="password" :type="text" :placeholder="pass_word" />
+        <font-awesome-icon :icon="['fas', 'eye']" :class="eyeOpen" @click="passwordEye" />
+        <font-awesome-icon :icon="['fas', 'eye-slash']" :class="eyeLash" @click="passwordEye" />
+        <p :class="wrongHint">{{ err }}</p>
+        <RouterLink to="/forgot" :class="a">{{ forget }}</RouterLink>
+      </section>
+      <button @click="accese" :class="button">{{ log_in }}</button>
+      <div class="or">
+        <hr />
+        <p :class="p">{{ or }}</p>
+        <hr />
+      </div>
+      <div class="singnUp">
+        <p :class="p">{{ signupP }}</p>
+        <RouterLink to="/signUp" :class="a">{{ signupA }}</RouterLink>
+      </div>
+    </form>
+  </div>
 </template>
+<style scope>
+.eye {
+  position: relative;
+  color: gray;
+  left: 9rem;
+  bottom: 1.9rem;
+  cursor: pointer;
+}
+.eye2 {
+  position: relative;
+  color: gray;
+  left: 6.5rem;
+  bottom: 1.9rem;
+  cursor: pointer;
+}
+@media (max-width: 340px) {
+  .eye {
+    left: 6rem;
+  }
+}
+</style>
